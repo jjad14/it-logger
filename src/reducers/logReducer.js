@@ -15,6 +15,15 @@ const reducer = (state = initalState, action) => {
                 logs: action.payload,
                 loading: false
             };
+        case types.ADD_LOG:
+            return {
+                ...state,
+                logs: [
+                    ...state.logs,
+                    action.payload
+                ],
+                loading: false
+            };
         case types.SET_LOADING:
             return {
                 ...state,
