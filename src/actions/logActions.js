@@ -51,6 +51,29 @@ export const addLog = (log) => async dispatch => {
     }
 };
 
+// Delete log
+export const deleteLog = (id) => async dispatch => {
+    try {
+        setLoading();
+        // dispatch(setLoading());
+
+        await fetch(`/logs/${id}`, {
+            method: 'DELETE',
+        });
+
+        dispatch({
+            type: types.DELETE_LOG,
+            payload: id
+        });
+        
+    } catch (error) {
+        dispatch({
+            type: types.LOGS_ERROR,
+            payload: error.response.data
+        });
+    }
+};
+
 export const setLoading = () => {
     return {
         type: types.SET_LOADING

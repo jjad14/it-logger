@@ -1,18 +1,25 @@
 {
   "logs": [
     {
-      "message": "Change Monitor #57",
-      "attention": false,
-      "tech": "John Doe",
-      "date": "2021-04-25T02:22:22.912Z",
+      "message": "Fix Monitor at Workstation #34",
+      "attention": true,
+      "tech": "Same Smith",
+      "date": "2021-04-25T02:52:20.088Z",
       "id": 1
     },
     {
-      "message": "Fix Internet Connection at Workstation #32",
-      "attention": true,
-      "tech": "Same Smith",
-      "date": "2021-04-25T02:24:31.641Z",
+      "message": "Upgrade Hardware at Workstation #34",
+      "attention": false,
+      "tech": "Sara Wilson",
+      "date": "2021-04-25T02:52:36.724Z",
       "id": 2
+    },
+    {
+      "message": "Test Log",
+      "attention": false,
+      "tech": "Same Smith",
+      "date": "2021-04-25T02:55:32.783Z",
+      "id": 3
     }
   ],
   "techs": [

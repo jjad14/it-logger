@@ -24,6 +24,12 @@ const reducer = (state = initalState, action) => {
                 ],
                 loading: false
             };
+        case types.DELETE_LOG:
+            return {
+                ...state,
+                logs: state.logs.filter(log => log.id !== action.payload),
+                loading: false
+            };
         case types.SET_LOADING:
             return {
                 ...state,
