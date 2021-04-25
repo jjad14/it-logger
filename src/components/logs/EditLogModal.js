@@ -114,7 +114,7 @@ const modalStyle = {
 EditLogModal.propTypes = {
     current: PropTypes.object,
     updateLog: PropTypes.func.isRequired,
-    clearCurrent: PropTypes.func.isRequired
+    clearCurrent: PropTypes.func
 };
 
 const mapStateToProps = state => ({
