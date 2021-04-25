@@ -1,19 +1,39 @@
-import React, { useState } from 'react';
-
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import M from 'materialize-css/dist/js/materialize.min.js';
 
-const EditLogModal = () => {
+import { updateLog } from '../../actions/logActions';
+
+const EditLogModal = ({current, updateLog}) => {
     const [message, setMessage] = useState('');
     const [attention, setAttention] = useState(false);
     const [tech, setTech] = useState('');
 
+    useEffect(() => {
+        if (current) {
+            setMessage(current.message);
+            setTech(current.tech);
+            setAttention(current.attention);
+        }
+    }, [current]);
 
     const onSubmitHandler = () => {
         if (message === '' || tech === '') {
             M.toast({html: 'Please enter a message and technician'});
         }
         else {
-            console.log(message, tech, attention);
+            const logToUpdate = {
+                id: current.id,
+                message,
+                tech,
+                attention,
+                date: new Date()
+            };
+
+            updateLog(logToUpdate);
+
+            M.toast({ html: `Log #${current.id} was updated by ${tech}`});
 
             // Clear State
             setMessage('');
@@ -40,7 +60,7 @@ const EditLogModal = () => {
                             value={message}
                             onChange={e => setMessage(e.target.value)}/>
                         <label htmlFor="message" 
-                            className="active">
+                            className={current && "active"}>
                             Log Message
                         </label>
                     </div>
@@ -90,4 +110,13 @@ const modalStyle = {
     height: '75%'
 };
 
-export default EditLogModal;
+EditLogModal.propTypes = {
+    current: PropTypes.object,
+    updateLog: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+    current: state.log.current
+});
+
+export default connect(mapStateToProps, { updateLog })(EditLogModal);

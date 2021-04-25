@@ -30,6 +30,23 @@ const reducer = (state = initalState, action) => {
                 logs: state.logs.filter(log => log.id !== action.payload),
                 loading: false
             };
+        case types.UPDATE_LOG:
+            return {
+                ...state,
+                logs: state.logs.map(log => 
+                    log.id === action.payload.id ? action.payload : log
+                )
+            };
+        case types.SET_CURRENT:
+            return {
+                ...state,
+                current: action.payload
+            };
+        case types.CLEAR_CURRENT:
+            return {
+                ...state,
+                current: null
+            };
         case types.SET_LOADING:
             return {
                 ...state,
