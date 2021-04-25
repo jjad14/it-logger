@@ -6,6 +6,13 @@
       "tech": "John Doe",
       "date": "2021-04-25T02:22:22.912Z",
       "id": 1
+    },
+    {
+      "message": "Fix Internet Connection at Workstation #32",
+      "attention": true,
+      "tech": "Same Smith",
+      "date": "2021-04-25T02:24:31.641Z",
+      "id": 2
     }
   ],
   "techs": [
