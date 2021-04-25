@@ -103,6 +103,28 @@ export const updateLog = (log) => async dispatch => {
     }
 };
 
+// Search Logs
+export const searchLogs = (text) => async dispatch => {
+    try {
+        setLoading();
+        // dispatch(setLoading());
+
+        const res = await fetch(`/logs?q=${text}`);
+        const data = await res.json();
+
+        dispatch({
+            type: types.SEARCH_LOGS,
+            payload: data
+        });
+        
+    } catch (error) {
+        dispatch({
+            type: types.LOGS_ERROR,
+            payload: error.response.data
+        });
+    }  
+};
+
 // Set Current log
 export const setCurrent = log => {
     return {

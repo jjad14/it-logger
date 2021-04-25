@@ -35,7 +35,13 @@ const reducer = (state = initalState, action) => {
                 ...state,
                 logs: state.logs.map(log => 
                     log.id === action.payload.id ? action.payload : log
-                )
+                ),
+                current: null
+            };
+        case types.SEARCH_LOGS:
+            return {
+                ...state,
+                logs: action.payload
             };
         case types.SET_CURRENT:
             return {
